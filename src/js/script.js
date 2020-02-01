@@ -63,8 +63,25 @@
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
       thisProduct.processOrder();
+      
     }
-
+    renderInMenu(){
+      const thisProduct = this;
+      const generatedHTML = templates.menuProduct(thisProduct.data);
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+      const menuContainer = document.querySelector(select.containerOf.menu);
+      menuContainer.appendChild(thisProduct.element);
+    }
+    getElements(){
+      const thisProduct = this;
+    
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+    }
     initOrderForm(){
       const thisProduct = this;
       thisProduct.form.addEventListener('submit', function(event){
@@ -86,66 +103,40 @@
 
     processOrder(){
       const thisProduct = this;
-      /* Create object with selected form elements*/
       const formData = utils.serializeFormToObject(thisProduct.form);
-      // console.log('formData:', formData);
       
       const allParamsProduct = thisProduct.data.params;
-      /* set variable price to equal thisProduct.data.price */
       let priceProduct = thisProduct.data.price;
-      /* START LOOP: for each paramId in thisProduct.data.params */
+
       for (let paramId in allParamsProduct){
-      /* save the element in thisProduct.data.params with key paramId as const param */
         const param = thisProduct.data.params[paramId];
-        /* START LOOP: for each optionId in param.options */
         for( let optionId in param.options){
-        /* save the element in param.options with key optionId as const option */
           const option = param.options[optionId];
-          //   console.log(option)
-          /* START IF: if option is selected and option is not default */
           const selectOption = formData.hasOwnProperty(paramId) && formData[paramId].includes(optionId);
-          //  console.log(selectOption)
-          /* add price of option to variable price */
+          const images = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+
+          if(selectOption && images){
+            images.classList.add(classNames.menuProduct.imageVisible);
+
+          }
+          else if( !selectOption && images){
+            images.classList.remove(classNames.menuProduct.imageVisible);
+
+          }
           if (selectOption && !option.default) {
             priceProduct += option.price;
-          //  console.log('cena produktu', priceProduct);
           }
           else if (!selectOption && option.default){
             priceProduct -= option.price;
           }
-          /* END IF: if option is selected and option is not default */
-         
-          /* START ELSE IF: if option is not selected and option is default */
-          /* deduct price of option from price */
-      
-          /* END ELSE IF: if option is not selected and option is default */
-    
-        /* END LOOP: for each optionId in param.options */
         }
-      
-      /* END LOOP: for each paramId in thisProduct.data.params */
       }
       thisProduct.priceElem.innerHTML = priceProduct;
-      console.log(thisProduct.priceElem)
-      /* set the contents of thisProduct.priceElem to be the value of variable price */
+      console.log(thisProduct.priceElem);
+      
       
     }
-    renderInMenu(){
-      const thisProduct = this;
-      const generatedHTML = templates.menuProduct(thisProduct.data);
-      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
-      const menuContainer = document.querySelector(select.containerOf.menu);
-      menuContainer.appendChild(thisProduct.element);
-    }
-    getElements(){
-      const thisProduct = this;
     
-      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
-      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
-      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
-      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
-      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
-    }
     initAccordion(){
       const thisProduct = this;
 
@@ -156,7 +147,7 @@
         const activeProducts = document.querySelectorAll('.active');
         for(let activeProduct of activeProducts){
           if (activeProduct !== clickTrigger){
-            activeProduct.classList.remove('active');
+            activeProduct.classList.remove('.active');
           }
         }
       });
