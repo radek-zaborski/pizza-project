@@ -9,7 +9,7 @@ const app = {
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
     const idFromHash = window.location.hash.replace('#/', '');
-   
+    
     let pageMatchingHash = thisApp.pages[0].id;
 
     for(let page of thisApp.pages){
@@ -23,8 +23,6 @@ const app = {
 
     for(let link of thisApp.navLinks){
       link.addEventListener('click', function(event){
-        console.log(link);
-    
         const clickedElement = this;
         event.preventDefault();
       
@@ -34,7 +32,7 @@ const app = {
         thisApp.activatePage(id);
 
         /*change url hash*/
-        window.location.hash = '#/' + id; 
+        window.location.hash = '#/' + id;
       
       });
     }
@@ -42,33 +40,19 @@ const app = {
   
   activatePage: function(pageId){
     const thisApp = this;
-    const nav = document.querySelector(select.forHidden.nav);
-    const cart = document.querySelector(select.containerOf.cart);
+
+    /* add class active to matching pages, remove non-mathing*/
     for(let page of thisApp.pages){
     
       page.classList.toggle(classNames.pages.active, page.id == pageId);
-    
     }
-    
+    /* add class active to matching lonks, remove non-mathing*/
     for(let link of thisApp.navLinks){
     
       link.classList.toggle(
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
-        
       );
-  
-      if(link.getAttribute('href') == '#home' & link.getAttribute('class') == 'active'){
-      
-        nav.classList.add('hidden');
-        cart.classList.add('hidden');
-      }
-      else if(link.getAttribute('href') == '#order' & link.getAttribute('class') == 'active' ||
-      link.getAttribute('href') == '#booking' & link.getAttribute('class') == 'active'){
-        nav.classList.remove('hidden');
-        cart.classList.remove('hidden');
-      }
-      
     }
 
   },
@@ -89,6 +73,7 @@ const app = {
         thisApp.initMenu();
       });
                    
+    console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
   initCart: function(){
     const thisApp = this;
@@ -106,7 +91,7 @@ const app = {
     const thisApp = this;
     const bookingWidget = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking(bookingWidget);
-    console.log;
+
   },
   init: function(){
     const thisApp = this;

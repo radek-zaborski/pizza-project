@@ -3,23 +3,21 @@
   height: 200px;
   position: relative;
 }
-
-.main-nav {
-  position: absolute;
-  top: 93px;
+.main-nav{
+position: absolute;
+top: 93px;
 }
-
 .home-wrapper {
   margin: 42px auto;
   padding: 72px 48px;
   background: #fff;
   border-bottom: 1px solid #e6e6e6;
   border-radius: 4px;
-
+ 
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 /* menu */
@@ -29,7 +27,6 @@
   justify-content: space-between;
   text-align: center;
 }
-
 .buttons-menu {
   flex-basis: 49.5%;
   position: relative;
@@ -44,7 +41,8 @@
   color: $color-light;
   cursor: pointer;
 
-  a {
+  color: $color-light;
+  a{
     text-decoration: none;
     font-size: 24px;
     color: $color-light;
@@ -55,30 +53,6 @@
     text-transform: uppercase;
   }
 }
-
-.up-text {
-  opacity: 0;
-  top: 82%;
-  right: 22%;
-  position: absolute;
-  transition: 0.5s;
-  font-family: $font-text;
-}
-
-.buttons-menu:hover {
-  a {
-    top: 10%;
-  }
-  
-  p {
-    top: 55%;
-    }
-  
-    .up-text {
-      opacity: 1;
-    }
-  }
-
 .up-text{
   opacity: 0;
   top: 82%;
@@ -86,9 +60,7 @@
   position: absolute;
   transition: 0.5s;
   font-family: $font-text;
-  .up-text:hover {
-    top:55%;
-  }
+
 }
 .link-image img {
   object-fit: cover;
@@ -107,214 +79,8 @@
   font-family:$font-text;
   background-color: $color-main;
   border-radius: 5px;
-  
   b{
     font-family:$font-header;
     font-size: 25px;
   }
-}
-.opinions{
-  padding-top: 104px;
-  height: 330px;
-  width: 100%;
-  display:inline-flex;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-  
- 
-  .image-opinions {
-    
-  flex: 4;
-  }
-  img{
-    display:block;
-    border-radius: 3px;
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-
-  }
-  .comments{
-    padding: 1px 0 0 38px ;
-    flex: 7.6;
-    text-align: left;
-
-    
-    /* tutaj dodana jest karuzela */
-.slideshow-container {
-  max-width: 100%;
-  
-  position: relative;
-  margin: auto;
-  .text-comment {
-    min-height:190px;
-    
-  }
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 15px 0 0 15px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-  }
-}
-
-.break-gallery {
-  flex-basis: 100%;
-  height: 88px;
-}
-.home-gallery {
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-}
-
-.gallery-img {
-  flex-basis: 31.5%;
-  height: 194px;
-  width: 158px;
-  transition: 0.3s;
-  margin-bottom: 10px;
-  position: relative;
-  display: inline-block;
-
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-}
-
-.image {
-  display: block;
-  width: 150px;
-  height: 172px;
-}
-
-.overlay {
-  position: absolute;
-  transition: all .3s ease;
-  opacity: 0;
-  background-color: lightgray;
-
-  i {
-    top: 50%;
-    left: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.gallery-img:hover .overlay {
-  opacity: 0.1;
-}
-
-.overlayFade {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background-color: #d3d3d382;
-}
-
-.gallery-img:hover .overlayFade {
-  width: 100%;
-}
-
-.gallery-ico {
-  color: $color-light;
-  position: absolute;
-  font-size: 22px;
-  cursor: pointer;
-
-  i {
-    display: inline-block;
-    left: 5%;
-    top: 40%;
-    transform: translate(-50%);
-    position: relative;
-  }
-}
-
-
-.gallery-img:hover>.gallery-ico {
-  display: inline-block;
-  opacity: 1;
-}
-
-.gallery-ico>.fa-heart:hover {
-  color: $color-main;
-  opacity: 1;
-}
-
-.gallery-ico>.fa-share-alt:hover {
-  color: $color-main;
-  opacity: 1;
 }

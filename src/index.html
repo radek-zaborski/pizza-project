@@ -8,9 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
-  <link rel="stylesheet" href="vendor/range-slider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -23,8 +21,7 @@
           <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
-        <div id="nav" class="main-nav">
-          <a href="#home">Home</a>
+        <div class="main-nav">
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -63,126 +60,9 @@
         </div>
       </div>
     </div>
-  </header> 
+  </header>
 
   <div id="pages">
-    <section id="home">
-      <div class="home-wrapper container">
-        <div class="main-naves">
-          <div class="buttons-menu">
-            <a href="#order" class="nav-links order">order online</a>
-              <div class="link-image">
-                <img src="./images/pizza-1.jpg" alt="" title="">
-                 <p class="up-text">Nam placerat commodo. </p>
-          </div>
-        </div>
-        <div class="buttons-menu">
-          <div class="link-image">
-              <img src="./images/pizza-2.jpg" alt="" title="">
-            <a href="#booking" class="nav-links book">book a table</a>
-            <p class="up-text">In laoreet orci ac vestibulum.</p>
-        </div>
-        </div>
-      </div>
-      <div class="info-open">
-       <b>OPENING HOURS:</b> <br>
-        TUE-SUN, 12PM-12AM
-      </div>
-      <div class="opinions">
-        <div class="image-opinions">
-          <img src="images/pizza-3.jpg" alt="">
-        </div>
-        <div class="comments">
-          <div class="slideshow-container">
-
-          <div class="mySlides fade">
-            <div class="text-comment">
-              <h4>AMAZING SERVICE!</h4>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rem asperiores amet impedit unde at reprehenderit ipsa harum omnis id. Dignissimos iste eaque aspernatur consequuntur non modi beatae unde ex.
-              <blockquote><i>-Margaret Osborne</i></blockquote>
-            </div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="text-comment">
-              <h4>FANTASTIC FOOD!</h4>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rem asperiores amet impedit unde at reprehenderit ipsa harum omnis id. Dignissimos iste eaque aspernatur consequuntur non modi beatae unde ex.
-              <blockquote><i>-Pande Monium</i></blockquote>
-            </div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="text-comment">
-              <h4>I LOVE IT!</h4>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rem asperiores amet impedit unde at reprehenderit ipsa harum omnis id. Dignissimos iste eaque aspernatur consequuntur non modi beatae unde ex.
-              <blockquote><i>-Mr X</i></blockquote>
-            </div>
-          </div>
-          <div >
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-          </div>
-        </div>
-        </div>
-        </div>
-        <div class="break-gallery">
-        </div>
-        <div class="home-gallery">
-          <div class="gallery-img">
-            <img src="images/pizza-4.jpg" class="image" alt="" title="" >
-            <div class="gallery-ico overlay overlayFade">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="gallery-img">
-            <img src="images/pizza-5.jpg" class="image" alt="" title="" >
-            <div class="gallery-ico overlay overlayFade">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="gallery-img">
-            <img src="images/pizza-6.jpg" class="image" alt="" title="" >
-            <div class="gallery-ico overlay overlayFade ">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-        </div>
-          <div class="break">
-          </div>
-          <div class="home-gallery">
-          <div class="gallery-img">
-            <img src="images/pizza-7.jpg" class="image" alt="" title="" >
-            <div class="gallery-ico overlay overlayFade">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="gallery-img">
-            <img src="images/pizza-8.jpg" class="image" alt="" title="" >
-            <div class="gallery-ico overlay overlayFade">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="gallery-img">
-            <img src="images/pizza-9.jpg" class="image" alt="" title="" >
-            <div class="gallery-ico overlay overlayFade">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-        </div>
-        <div class="home-footer">
-          <a href="#footer" class="footer">View more on Instagram</a>
-        </div>
-      </div>
-       
-        
-    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -365,9 +245,7 @@
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-  <script src="js/components/carousel.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="vendor/range-slider.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>
