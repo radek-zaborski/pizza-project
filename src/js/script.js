@@ -133,6 +133,7 @@
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
     }
 
@@ -140,8 +141,9 @@
       const thisProduct = this;
       const formData = utils.serializeFormToObject(thisProduct.form);
       
+      thisProduct.params = {};
       const allParamsProduct = thisProduct.data.params;
-      let priceProduct = thisProduct.data.price;
+      let price = thisProduct.data.price;
 
       for (let paramId in allParamsProduct){
         const param = thisProduct.data.params[paramId];
@@ -150,28 +152,50 @@
           const selectOption = formData.hasOwnProperty(paramId) && formData[paramId].includes(optionId);
           const images = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
 
+            
+        
           if(selectOption && images){
+            if(!thisProduct.params[paramId]){
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {},
+              };
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
+
             images.classList.add(classNames.menuProduct.imageVisible);
 
           }
+          
           else if( !selectOption && images){
             images.classList.remove(classNames.menuProduct.imageVisible);
 
           }
           if (selectOption && !option.default) {
-            priceProduct += option.price;
+            price += option.price;
           }
           else if (!selectOption && option.default){
-            priceProduct -= option.price;
+            price -= option.price;
           }
         }
       }
-      priceProduct *= thisProduct.amountWidget.value;
-      thisProduct.priceElem.innerHTML = priceProduct;
-      
+      /* multiply price by amount */
+      thisProduct.priceSingle = price;
+      thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
+
+      /* set the contents of thisProduct.priceElem to be the value of variable price */
+      thisProduct.priceElem.innerHTML = thisProduct.price;
       
     }
-    
+    addToCart(){
+      const thisProduct = this;
+
+      thisProduct.name = thisProduct.data.name;
+      thisProduct.amount = thisProduct.amountWidget.value;
+
+      app.cart.add(thisProduct);
+    }
+
     initAccordion(){
       const thisProduct = this;
 
@@ -258,12 +282,23 @@
       thisCart.initActions();
       console.log('new cart', thisCart);
     }
+    add(menuProduct){
+      const thisCart = this;
+
+      const generatedHTML = templates.cartProduct(menuProduct);
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
+      thisCart.dom.productList.appendChild(generatedDOM);
+    }
+ 
     getElements(element){
       const thisCart = this;
       thisCart.dom = {};
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+
     }
     initActions(){
       const  thisCart = this;
