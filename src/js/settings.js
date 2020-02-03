@@ -1,6 +1,12 @@
 /* global Handlebars */
 
 export const select = {
+  main: {
+    links: '.main-naves a',
+  },
+  forHidden: {
+    nav: '#nav',
+  },
   templateOf: {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
@@ -69,7 +75,7 @@ export const select = {
     send: '[type="submit"]',
   },
   nav: {
-    links: '.main-nav a',
+    links: '.main-nav a, .main-naves a',
   },
 };
 
@@ -123,6 +129,7 @@ export const settings = {
     notRepeatParam: 'repeat=false',
     repeatParam: 'repeat_ne=false',
   },
+  
 };
 
 export const templates = {
@@ -131,4 +138,4 @@ export const templates = {
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
   
 };
-console.log('templates', templates.bookingWidget);
+
