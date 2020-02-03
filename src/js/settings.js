@@ -63,6 +63,10 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    phoneNum: '[name="phone"]',
+    address: '[name="address"]',
+    starters: '[name="starter"]',
+    send: '[type="submit"]',
   },
   nav: {
     links: '.main-nav a',
@@ -127,3 +131,4 @@ export const templates = {
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
   
 };
+console.log('templates', templates.bookingWidget);
