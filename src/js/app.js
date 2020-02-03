@@ -26,12 +26,9 @@ const app = {
         const clickedElement = this;
         event.preventDefault();
       
-        /* get page id from href attribute*/
         const id = clickedElement.getAttribute('href').replace('#', '');
-        /* run thisApp.actvatePage with that id*/
         thisApp.activatePage(id);
 
-        /*change url hash*/
         window.location.hash = '#/' + id;
       
       });
@@ -41,12 +38,11 @@ const app = {
   activatePage: function(pageId){
     const thisApp = this;
 
-    /* add class active to matching pages, remove non-mathing*/
     for(let page of thisApp.pages){
     
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
-    /* add class active to matching lonks, remove non-mathing*/
+
     for(let link of thisApp.navLinks){
     
       link.classList.toggle(
@@ -72,9 +68,8 @@ const app = {
         thisApp.data.products = parsedResponse;
         thisApp.initMenu();
       });
-                   
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
+
   initCart: function(){
     const thisApp = this;
 

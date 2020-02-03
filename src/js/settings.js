@@ -63,10 +63,6 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
-    bookTable: '.booking-form [type="submit"]',
-    bookPhone: '.booking-form [name="phone"]',
-    bookAddress: '.booking-form [name="address"]',
-    starters: '[name="starter"]',
   },
   nav: {
     links: '.main-nav a',
@@ -94,7 +90,6 @@ export const classNames = {
 };
 
 export const settings = {
-
   hours: {
     open: 12,
     close: 24,
@@ -132,4 +127,3 @@ export const templates = {
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
   
 };
-console.log('templates', templates.bookingWidget);
