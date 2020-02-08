@@ -1,5 +1,6 @@
 import AmountWidget from './AmountWidget.js';
 import{select} from '../settings.js';
+
 class CartProduct{
   constructor(menuProduct, element){
     const thisCartProduct = this;
@@ -25,6 +26,7 @@ class CartProduct{
     thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
     thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
   }
+
   initAmountWidget(){
     const thisCartProduct = this;
     thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
@@ -34,6 +36,7 @@ class CartProduct{
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
     });
   }
+
   remove(){
     const thisCartProduct = this;
     const event = new CustomEvent('remove', {
@@ -44,6 +47,7 @@ class CartProduct{
     });
     thisCartProduct.dom.wrapper.dispatchEvent(event);
   }
+
   initActions() {
 
     const thisCartProduct = this;
@@ -55,6 +59,7 @@ class CartProduct{
       thisCartProduct.remove();
     });
   }
+  
   getData(){
     const thisCartProduct = this;
 

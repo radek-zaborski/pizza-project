@@ -1,6 +1,6 @@
 import {select, templates, settings, classNames} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
-import utils from '../utils.js';
+import {utils} from '../utils.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
 
@@ -205,10 +205,9 @@ class Booking{
     thisBooking.date = thisBooking.parseValue(thisBooking.datePicker.value);
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
 
-
     let allAvailable = false;
 
-    if(
+    if (
       typeof thisBooking.booked[thisBooking.date] == 'undefined'
       ||
       typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == 'undefined'
@@ -216,25 +215,26 @@ class Booking{
       allAvailable = true;
     }
 
-    for(let table of thisBooking.dom.tables){
+    for (let table of thisBooking.dom.tables){
       let tableId = table.getAttribute(settings.booking.tableIdAttribute);
       if (!isNaN(tableId)){
         tableId = parseInt(tableId);
       }
 
-      if(
+      if (
         !allAvailable
       &&
       thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
       ){
         table.classList.add(classNames.booking.tableBooked);
-      } else {
+      } 
+      
+      else {
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
-    
-
   }
+
   parseValue(){
     const thisBooking = this;
     const dateObj = new Date(thisBooking.datePicker.value);
@@ -246,9 +246,7 @@ class Booking{
   render(bookingWidget){
 
     const thisBooking = this;
-
     const generateHTML = templates.bookingWidget();
-
     thisBooking.dom = {};
     
     thisBooking.dom.wrapper = bookingWidget;
@@ -268,6 +266,7 @@ class Booking{
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
     thisBooking.dom.send = thisBooking.dom.wrapper.querySelector(select.booking.send);
   }
+
   initWidget(){
 
     const thisBooking = this;
@@ -287,7 +286,6 @@ class Booking{
       alert ('dziękujemy za złożenie rezerwacji' );
     });
   }
-  
 }
 
 export default Booking;

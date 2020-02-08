@@ -28,12 +28,9 @@ const app = {
         const clickedElement = this;
         event.preventDefault();
       
-        /* get page id from href attribute*/
         const id = clickedElement.getAttribute('href').replace('#', '');
-        /* run thisApp.actvatePage with that id*/
         thisApp.activatePage(id);
 
-        /*change url hash*/
         window.location.hash = '#/' + id; 
       
       });
@@ -58,20 +55,19 @@ const app = {
         
       );
   
-      if(link.getAttribute('href') == '#home' & link.getAttribute('class') == 'active'){
+      if (link.getAttribute('href') == '#home' & link.getAttribute('class') == 'active'){
       
         nav.classList.add('hidden');
         cart.classList.add('hidden');
       }
-      else if(link.getAttribute('href') == '#order' & link.getAttribute('class') == 'active' ||
+      else if (link.getAttribute('href') == '#order' & link.getAttribute('class') == 'active' ||
       link.getAttribute('href') == '#booking' & link.getAttribute('class') == 'active'){
         nav.classList.remove('hidden');
         cart.classList.remove('hidden');
       }
-      
     }
-
   },
+
   initMenu: function(){                                  
     const thisApp = this;  
     for (let productData in thisApp.data.products){                
@@ -87,9 +83,9 @@ const app = {
       .then(parsedResponse =>{
         thisApp.data.products = parsedResponse;
         thisApp.initMenu();
-      });
-                   
+      });              
   },
+
   initCart: function(){
     const thisApp = this;
 
@@ -102,23 +98,21 @@ const app = {
       app.cart.add(event.detail.product);
     });
   },
+
   initBooking: function(){
     const thisApp = this;
     const bookingWidget = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking(bookingWidget);
-    console.log;
   },
+
   init: function(){
     const thisApp = this;
-    //  console.log('*** App starting ***');
-    //  console.log('thisApp:', thisApp);
-    // console.log('classNames:', classNames);
-    //  console.log('settings:', settings);
-    // console.log('templates:', templates);
+ 
     thisApp.initPages();
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
   },
 };
+
 app.init();

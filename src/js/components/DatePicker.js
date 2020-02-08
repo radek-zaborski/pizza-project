@@ -1,5 +1,5 @@
 import BaseWidget from './BaseWidget.js';
-import utils from '../Utils.js';
+import {utils} from '../utils.js';
 import {select, settings} from '../settings.js';
 /* global flatpickr */
 
@@ -35,18 +35,18 @@ class DatePicker extends BaseWidget{
       onChange: function(dateStr){
         thisWidget.value = dateStr;
       },
-      
     });
   }
 
   parseValue(value){
     return value;
   }
+
   isValid(){
     return true;
   }
+
   renderValue(){
-    // console.log('rendervalue');
   }
 }
 

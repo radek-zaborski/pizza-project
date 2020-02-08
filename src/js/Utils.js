@@ -1,5 +1,5 @@
 /* global Handlebars, dataSource */
-const utils = {}; // eslint-disable-line no-unused-vars
+export const utils = {}; // eslint-disable-line no-unused-vars
 
 utils.createDOMFromHTML = function(htmlString) {
   let div = document.createElement('div');
@@ -25,13 +25,16 @@ utils.serializeFormToObject = function(form){
               output[field.name].push(option.value);
             }
           }
-        } else if ((field.type != 'checkbox' && field.type != 'radio') || field.checked) {
+        } 
+        
+        else if ((field.type != 'checkbox' && field.type != 'radio') || field.checked) {
           utils.createPropIfUndefined(output, field.name);
           output[field.name].push(field.value);
         }
       }
     }
   }
+  
   return output;
 };
 
@@ -78,4 +81,3 @@ Handlebars.registerHelper('joinValues', function(input, options) {
   return Object.values(input).join(options.fn(this));
 });
 
-export default utils;

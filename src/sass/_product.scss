@@ -93,9 +93,7 @@
       &.active {
         opacity: 1;
       }
-
     }
-
   }
 
   &.active {
@@ -110,9 +108,7 @@
     .product__icon {
       transform: rotate(180deg);
     }
-
   }
-
 }
 
 .widget-amount {
@@ -123,5 +119,4 @@
     margin: 0 ($base-size / 2);
     padding: 0;
   }
-
 }
